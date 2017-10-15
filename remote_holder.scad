@@ -22,7 +22,7 @@ module remote_holder ()
     	    cube ([length, width, height]);
 	}
 
-	// top inset
+	// middle inset
 	translate ([0, 0, top_z]) {
 	    # cube ([top_cube_length,
 		     top_cube_width,
@@ -33,17 +33,25 @@ module remote_holder ()
     // top inset
 	translate ([-2 * borders, 0, top_z + borders]) {
 	    # cube ([top_cube_length-2*borders,
-		     top_cube_width - 2* borders,
+		     top_cube_width - 1.25* borders,
 		     top_cube_height],
 		    center=true) ;
 	}
-    /*
-	translate ([-length/2.0, width/2, height]) {
+    
+    // cut edges on holding clips
+	translate ([-length/2, width/2-borders, height]) {
     	   # polyhedron (	
         // 0. li vo oben, 1. li vo unten, 2. 
-	    		points = [[0, 0, 0], [0,-1.5*borders,0], [length, 0, 0], [length,-1.5*borders, -borders], [length,-1.5*borders,0]],
-                faces = [[0,1,2], [1,4,5,2], [4,3,5], [3,0,2,5]]);
-	}*/
+	    		points = [[0,0,0], [0,-borders,0], [0,-borders,-borders], [length,0,0], [length,-borders,0], [length,-borders,-borders]],
+                faces = [[0,1,2], [2,1,4,5], [5,4,3], [4,1,0,3],[3,0,2,5]]);
+	}
+    // cut edges on holding clips
+	translate ([-length/2, -width/2+borders, height]) {
+    	   # polyhedron (	
+        // 0. li vo oben, 1. li vo unten, 2. 
+	    		points = [[0,0,0], [0,borders,0], [0,borders,-borders], [length,0,0], [length,borders,0], [length,borders,-borders]],
+                faces = [[0,1,2], [2,1,4,5], [5,4,3], [4,1,0,3],[3,0,2,5]]);
+	}
     
     // bohrung (h, bottom_r, top_r)
     
