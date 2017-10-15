@@ -4,7 +4,7 @@ remote_holder ();
 module remote_holder ()
 {
     height = 22  ;
-    length = 87 ;
+    length = 84 ;
     width= 50.5 ;
     half_width  = width / 2;
     
@@ -31,9 +31,9 @@ module remote_holder ()
 	}
     
     // top inset
-	translate ([-2 * borders, 0, top_z + borders]) {
-	    # cube ([top_cube_length-2*borders,
-		     top_cube_width - 1.25* borders,
+	translate ([-borders, 0, top_z + borders]) {
+	    # cube ([top_cube_length,
+		     top_cube_width - 1* borders,
 		     top_cube_height],
 		    center=true) ;
 	}
@@ -81,10 +81,15 @@ module remote_holder ()
     translate ([-length/2.0,width/4,0]) {
         # cube ([length/2.6, width/4,height]);
 	}
+    
+    // top clamp shortener
+    translate ([-length/2.0,-width/2,1.5*borders]) {
+        # cube ([borders, width,borders]);
+	}
         
     end_curve_r = 7.5;
     
-    translate ([-length/2 + end_curve_r + 1,width/2,borders + end_curve_r]) {
+    translate ([-length/2 + end_curve_r-1,width/2,borders + end_curve_r]) {
     rotate([90,0,0])
     	   # cylinder (width, end_curve_r,end_curve_r);
 	}
