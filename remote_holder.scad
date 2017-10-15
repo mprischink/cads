@@ -30,12 +30,20 @@ module remote_holder ()
 		    center=true) ;
 	}
     
-    
+    // top inset
+	translate ([-3 * borders, 0, top_z + borders]) {
+	    # cube ([top_cube_length-2*borders,
+		     top_cube_width - 2* borders,
+		     top_cube_height],
+		    center=true) ;
+	}
+    /*
 	translate ([-length/2.0, width/2, height]) {
     	   # polyhedron (	
-	    		points = [[0, 0, 0], [0,-1.5*borders, -borders], [0,-width + 1.5*borders,-borders],[0,-width,0], [length - 4*borders, 0, 0], [length - 4*borders,-1.5*borders, -borders], [length - 4*borders,-width + 1.5*borders,-borders],[length - 4*borders,-width,0]],
-                faces = [[0,1,2,3], [1,5,4,0], [4,5,6,7], [3,7,6,2], [0,3,7,4], [1,2,6,5]]);
-	}
+        // 0. li vo oben, 1. li vo unten, 2. 
+	    		points = [[0, 0, 0], [0,-1.5*borders,0], [length, 0, 0], [length,-1.5*borders, -borders], [length,-1.5*borders,0]],
+                faces = [[0,1,2], [1,4,5,2], [4,3,5], [3,0,2,5]]);
+	}*/
     
     	translate ([0,0,0]) {
     	   # cylinder (3, 2,4.25);
@@ -57,5 +65,4 @@ module remote_holder ()
         # cube ([length/3, width/4,height]);
 	}
     }
-    
 }
