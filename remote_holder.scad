@@ -24,14 +24,20 @@ module remote_holder ()
 
 	// middle inset
 	translate ([0, 0, top_z]) {
-	    # cube ([top_cube_length,
+	    # cube ([top_cube_length - 2* borders,
 		     top_cube_width,
 		     top_cube_height],
 		    center=true) ;
 	}
     
+    begin_curve_r = 7;
+    translate ([length/2 - borders - begin_curve_r,width/2,borders + begin_curve_r]) {
+    rotate([90,0,0])
+    	   # cylinder (width, begin_curve_r,begin_curve_r);
+	}
+    
     // top inset
-	translate ([-borders, 0, top_z + borders]) {
+	translate ([-2*borders, 0, top_z + borders]) {
 	    # cube ([top_cube_length,
 		     top_cube_width - 1* borders,
 		     top_cube_height],
